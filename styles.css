@@ -1,6 +1,6 @@
 /* Estilos gerais */
 body {
-    font-family: 'Baloo', sans-serif;
+    font-family: 'Baloo 2', sans-serif;
     background: url('images/Logo_mundo.jpg') no-repeat center center fixed;
     background-size: cover;
     margin: 0;
@@ -15,20 +15,57 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    padding: 0 10px; /* Adiciona um pouco de padding lateral */
+    padding: 0 10px;
 }
 
 /* Título */
 h1 {
-    font-family: 'Baloo', sans-serif;
+    font-family: 'Baloo 2', sans-serif;
     color: #030a6b;
     margin-bottom: 20px;
-    font-size: 2rem; /* Tamanho da fonte ajustado */
+    font-size: 5rem;
+}
+
+/* Cabeçalho do Quiz */
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.quiz-score, .quiz-timer, .quiz-lives {
+    flex-grow: 1;
+    text-align: center;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 1.2rem;
+}
+
+.quiz-score {
+    margin-right: 10px;
+}
+
+.quiz-lives {
+    margin-left: 10px;
+}
+
+/* Adicionar classe específica para o contêiner do botão de iniciar */
+.start-button-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 /* Botão de Início e Tentar Novamente */
 #start-button, .retry-button {
-    background-color: #28a745; /* Verde */
+    background-color: #28a745;
     color: #fff;
     border: none;
     padding: 15px 30px;
@@ -39,19 +76,43 @@ h1 {
 }
 
 #start-button:hover, .retry-button:hover {
-    background-color: #218838; /* Verde escuro */
+    background-color: #218838;
 }
 
-/* Timer, Pergunta e Alternativas */
-.quiz-timer, .quiz-question, .quiz-options, .quiz-next, .quiz-result, .quiz-lives {
+/* Informações */
+.quiz-timer, .quiz-options, .quiz-next, .quiz-result {
     color: #030a6b;
-    font-family: 'Baloo', sans-serif;
-    font-size: 1.5rem; /* Tamanho da fonte ajustado */
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 1.5rem;
 }
 
-/* Alternativas */
+.quiz-lives {
+    color: #080911;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 1.2rem;
+}
+.quiz-question {
+    color: #030a6b;
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 3.0rem;
+}
+
+/* Estilo de balão semi-transparente para perguntas e opções */
+.quiz-question, .quiz-options {
+    background-color: rgba(87, 163, 185, 0.7);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(70, 158, 230, 0.1);
+    margin: 20px 0;
+    width: 90%; /* Ajusta a largura do balão */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .quiz-option {
-    background-color: #007bff; /* Azul */
+    background-color: #007bff;
     color: #fff;
     border: none;
     padding: 15px 30px;
@@ -59,37 +120,37 @@ h1 {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    font-size: 1.2rem; /* Tamanho da fonte ajustado */
+    font-size: 1.2rem;
 }
 
 .quiz-option:hover {
-    background-color: #0056b3; /* Azul escuro */
+    background-color: #0056b3;
 }
 
 /* Alternativa correta */
 .correct {
-    background-color: #28a745; /* Verde */
+    background-color: #28a745;
 }
 
 /* Alternativa errada */
 .incorrect {
-    background-color: #dc3545; /* Vermelho */
+    background-color: #dc3545;
 }
 
 /* Botão Próxima Pergunta */
 .quiz-next {
-    background-color: #007bff; /* Azul */
+    background-color: #007bff;
     color: #fff;
     border: none;
-    padding: 15px 30px;
+    padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    font-size: 1.2rem; /* Tamanho da fonte ajustado */
+    font-size: 1rem;
 }
 
 .quiz-next:hover {
-    background-color: #0056b3; /* Azul escuro */
+    background-color: #0056b3;
 }
 
 /* Resultados e Game Over */
@@ -109,16 +170,17 @@ h1 {
 /* Media Queries para dispositivos móveis */
 @media (max-width: 600px) {
     .quiz-container {
-        padding: 0 5px; /* Menos padding em telas menores */
+        padding: 0 5px;
     }
     h1 {
-        font-size: 1.5rem; /* Reduz o tamanho do título em telas menores */
+        font-size: 1.5rem;
     }
     #start-button, .retry-button, .quiz-option, .quiz-next {
-        font-size: 1rem; /* Reduz o tamanho da fonte dos botões */
-        padding: 10px 20px; /* Ajusta o padding dos botões */
+        font-size: 1rem;
+        padding: 10px 20px;
     }
     .quiz-timer, .quiz-question, .quiz-result, .quiz-lives {
-        font-size: 1.2rem; /* Reduz o tamanho da fonte */
+        font-size: 1.2rem;
     }
 }
+
