@@ -107,7 +107,7 @@ function showResult() {
     stopTimer();
     document.getElementById('quiz').style.display = 'none';
     document.getElementById('result-screen').style.display = 'flex';
-    document.getElementById('result-message').innerText = `Você venceu! acertou todas as perguntas!`;
+    document.getElementById('result-message').innerText = `Parabéns, você acertou ${score} de ${questions.length} perguntas!`;
 }
 
 function showGameOver() {
