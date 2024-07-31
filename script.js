@@ -22,9 +22,12 @@ async function loadQuestions() {
 
 function startQuiz() {
     document.getElementById('start-screen').style.display = 'none';
+    document.getElementById('quiz-header').style.display = 'flex';
     document.getElementById('quiz').style.display = 'flex';
-    document.getElementById('result-screen').style.display = 'none'; // Garante que a tela de resultado está oculta
+    document.getElementById('result-screen').style.display = 'none';
     loadQuestion();
+    updateScore();
+    updateLives();
 }
 
 function startTimer() {
@@ -40,7 +43,7 @@ function startTimer() {
 }
 
 function stopTimer() {
-    clearInterval(timer); // Para o timer quando a pergunta é respondida
+    clearInterval(timer);
 }
 
 function loadQuestion() {
@@ -52,11 +55,11 @@ function loadQuestion() {
         button.classList.remove('correct', 'incorrect');
     });
     document.getElementById('nextButton').style.display = 'none';
-    startTimer(); // Reinicia o timer ao carregar uma nova pergunta
+    startTimer();
 }
 
 function selectOption(index) {
-    stopTimer(); // Para o timer quando a opção é selecionada
+    stopTimer();
     const question = questions[currentQuestionIndex];
     const options = document.querySelectorAll('.quiz-option');
 
@@ -70,17 +73,18 @@ function selectOption(index) {
 
     if (index === question.correct) {
         score++;
-        document.getElementById('result').innerText = 'Correto!';
+        document.getElementById('result').innerText = ''; //Pro caso de eu querer adicionar alguma menasgem ao responder alguma pergunta
     } else {
         handleIncorrectAnswer();
     }
     document.getElementById('nextButton').style.display = 'block';
+    updateScore();
 }
 
 function handleIncorrectAnswer() {
     lives--;
-    document.getElementById('lives').innerText = `Vidas: ${lives}`;
-    document.getElementById('result').innerText = 'Incorreto!';
+    updateLives();
+    document.getElementById('result').innerText = ''; //Pro caso de eu querer adicionar alguma mensagem ao responder alguma pergunta
     if (lives <= 0) {
         showGameOver();
     } else {
@@ -95,20 +99,19 @@ function nextQuestion() {
     } else {
         loadQuestion();
         resetOptions();
-        stopTimer(); // Para o timer quando a próxima pergunta é carregada
+        stopTimer();
     }
 }
 
 function showResult() {
-    stopTimer(); // Para o timer quando o resultado é exibido
+    stopTimer();
     document.getElementById('quiz').style.display = 'none';
     document.getElementById('result-screen').style.display = 'flex';
-    document.getElementById('result-message').innerText = `Você acertou ${score} de ${questions.length} perguntas!`;
-    // showConfetti(); // Se você estiver usando um efeito de confete
+    document.getElementById('result-message').innerText = `Você venceu! acertou todas as perguntas!`;
 }
 
 function showGameOver() {
-    stopTimer(); // Para o timer quando o jogo termina
+    stopTimer();
     document.getElementById('quiz').style.display = 'none';
     document.getElementById('result-screen').style.display = 'flex';
     document.getElementById('result-message').innerText = `Game Over! Você acertou ${score} de ${questions.length} perguntas.`;
@@ -122,7 +125,17 @@ function restartGame() {
     document.getElementById('quiz').style.display = 'none';
     document.getElementById('result-screen').style.display = 'none';
     document.getElementById('start-screen').style.display = 'flex';
+    document.getElementById('quiz-header').style.display = 'none'; // Esconder o cabeçalho ao reiniciar
+    updateScore();
+    updateLives();
 }
 
-// Adicionar o evento de clique para iniciar o quiz
+function updateScore() {
+    document.getElementById('score').innerText = `Acertos: ${score}`;
+}
+
+function updateLives() {
+    document.getElementById('lives').innerText = `Vidas: ${lives}`;
+}
+
 document.getElementById('start-button').addEventListener('click', loadQuestions);
