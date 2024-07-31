@@ -5,18 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Automotivo</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo:wght@400;700&display=swap"> <!-- Inclui a fonte Baloo -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap">
 </head>
 <body>
     <!-- Tela de Início -->
     <div class="quiz-container" id="start-screen">
         <h1>Quiz Automotivo</h1>
-        <button id="start-button">Começar Quiz</button>
+        <div class="start-button-container">
+            <button id="start-button">Começar Quiz</button>
+        </div>
+    </div>
+
+    <!-- Cabeçalho do Quiz -->
+    <div class="quiz-header" id="quiz-header" style="display: none;">
+        <div id="score" class="quiz-score">Acertos: 0</div>
+        <div id="timer" class="quiz-timer">30</div>
+        <div id="lives" class="quiz-lives">Vidas:3</div>
     </div>
 
     <!-- Tela do Quiz -->
     <div class="quiz-container" id="quiz" style="display: none;">
-        <div id="timer" class="quiz-timer">30</div>
         <div id="question" class="quiz-question"></div>
         <div class="quiz-options">
             <button class="quiz-option" id="option1" onclick="selectOption(0)"></button>
@@ -26,7 +34,6 @@
         </div>
         <button id="nextButton" class="quiz-next" onclick="nextQuestion()" style="display: none;">Próxima</button>
         <div id="result" class="quiz-result"></div>
-        <div id="lives" class="quiz-lives">Vidas: 3</div>
     </div>
 
     <!-- Tela de Resultado -->
@@ -38,7 +45,6 @@
     <!-- Logo do SENAI -->
     <img id="senai-logo" src="images/download.png" alt="Logo SENAI">
 
-    <!-- Adicionar o script JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
